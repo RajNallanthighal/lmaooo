@@ -25,7 +25,7 @@ jobs:
         run: |
           git remote add account2-main https://github.com/rkn3743/try.git
           git fetch account2-main
-          git merge dev  # Merge changes from dev branch
+          git merge main  # Merge changes from dev branch
       
       - name: Push Changes to Account 2's Main Repo
         run: |
