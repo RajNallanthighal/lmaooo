@@ -25,7 +25,10 @@ jobs:
         run: |
           git remote add account2-main https://github.com/rkn3743/try.git  # Account 2's main repo URL
           git fetch account2-main
-          git merge main  # Merge changes from the current branch
+
+      - name: Configure Pull Strategy
+        run: |
+          git config pull.rebase false  # Set pull strategy to merge
 
       - name: Pull Latest Changes from Account 2's Main Repo
         run: |
