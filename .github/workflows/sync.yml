@@ -3,7 +3,7 @@ name: Sync with Account 2's Main Repo
 on:
   push:
     branches:
-      - dev  # This will trigger on every commit to the dev branch
+      - main  # This will trigger on every commit to the main branch
 
 jobs:
   sync:
@@ -13,17 +13,17 @@ jobs:
       - name: Checkout Dev Repo
         uses: actions/checkout@v2
         with:
-          repository: account1/dev-repo
+          repository: RajNallanthighal/lmaooo/main
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Git
         run: |
-          git config --global user.name "Your Name"
-          git config --global user.email "your-email@example.com"
+          git config --global user.name "RajNallanthighal"
+          git config --global user.email "raj.nallanthi@gmail.com"
 
       - name: Add Account 2's Main Repo as Remote
         run: |
-          git remote add account2-main https://github.com/account2/main-repo.git
+          git remote add account2-main https://github.com/rkn3743/try.git
           git fetch account2-main
           git merge dev  # Merge changes from dev branch
       
