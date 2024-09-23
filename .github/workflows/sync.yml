@@ -25,7 +25,10 @@ jobs:
         run: |
           git remote add account2-main https://github.com/rkn3743/try.git  # Account 2's main repo URL
           git fetch account2-main
-          git merge main  # Merge changes from the current branch
+
+      - name: Pull Changes from Account 2's Main Repo
+        run: |
+          git pull account2-main main --allow-unrelated-histories  # Pull changes to ensure local is up to date
 
       - name: Push Changes to Account 2's Main Repo
         run: |
