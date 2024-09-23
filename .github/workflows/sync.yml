@@ -32,7 +32,7 @@ jobs:
 
       - name: Pull Latest Changes from Account 2's Main Repo
         run: |
-          git pull account2-main main  # Pull the latest changes from the remote main branch
+          git pull account2-main main --allow-unrelated-histories  # Allow merging unrelated histories
           
       - name: Push Changes to Account 2's Main Repo
         run: |
