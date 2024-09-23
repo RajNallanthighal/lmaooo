@@ -1,0 +1,34 @@
+name: Sync with Account 2's Main Repo
+
+on:
+  push:
+    branches:
+      - dev  # This will trigger on every commit to the dev branch
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Dev Repo
+        uses: actions/checkout@v2
+        with:
+          repository: account1/dev-repo
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "Your Name"
+          git config --global user.email "your-email@example.com"
+
+      - name: Add Account 2's Main Repo as Remote
+        run: |
+          git remote add account2-main https://github.com/account2/main-repo.git
+          git fetch account2-main
+          git merge dev  # Merge changes from dev branch
+      
+      - name: Push Changes to Account 2's Main Repo
+        run: |
+          git push account2-main main
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCOUNT2_TOKEN }}
