@@ -13,8 +13,8 @@ jobs:
       - name: Checkout Dev Repo
         uses: actions/checkout@v2
         with:
-          repository: RajNallanthighal/lmaooo
-          token: ${{ secrets.ACCOUNT2_TOKEN }}
+          repository: RajNallanthighal/lmaooo  # The dev repo on account 1
+          token: ${{ secrets.ACCOUNT2_TOKEN }}  # Use the PAT from account 2
 
       - name: Set up Git
         run: |
@@ -23,12 +23,16 @@ jobs:
 
       - name: Add Account 2's Main Repo as Remote
         run: |
-          git remote add account2-main https://github.com/rkn3743/try.git
+          git remote add account2-main https://github.com/rkn3743/try.git  # Account 2's main repo URL
           git fetch account2-main
-          git merge main  # Merge changes from dev branch
-      
+          git merge main  # Merge changes from the current branch
+
+      - name: Pull Latest Changes from Account 2's Main Repo
+        run: |
+          git pull account2-main main  # Pull the latest changes from the remote main branch
+          
       - name: Push Changes to Account 2's Main Repo
         run: |
-          git push account2-main main
+          git push account2-main main  # Push changes to account 2's main branch
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCOUNT2_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCOUNT2_TOKEN }}  # Use the PAT from account 2
