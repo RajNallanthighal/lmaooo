@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Dev Repo
         uses: actions/checkout@v2
         with:
-          repository: RajNallanthighal/lmaooo/main
+          repository: RajNallanthighal/lmaooo
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Git
