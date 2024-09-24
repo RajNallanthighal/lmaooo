@@ -3,7 +3,7 @@ name: Sync with Account 2's Main Repo
 on:
   push:
     branches:
-      - main  # This will trigger on every commit to the main branch
+      - main # insert branch in Account 1 we want to copy
 
 jobs:
   sync:
@@ -13,21 +13,21 @@ jobs:
       - name: Checkout Dev Repo
         uses: actions/checkout@v2
         with:
-          repository: RajNallanthighal/lmaooo  # The dev repo on account 1
-          token: ${{ secrets.ACCOUNT2_TOKEN }}  # Use the PAT from account 2
+          repository: RajNallanthighal/lmaooo  # insert Account 1 repo
+          token: ${{ secrets.ACCOUNT2_TOKEN }}  # insert PAT from Account 2
 
       - name: Set up Git
         run: |
-          git config --global user.name "RajNallanthighal"
-          git config --global user.email "raj.nallanthi@gmail.com"
+          git config --global user.name "RajNallanthighal" # insert Account 1 Username
+          git config --global user.email "raj.nallanthi@gmail.com" # insert Account 1 email
 
       - name: Add Account 2's Main Repo as Remote
         run: |
-          git remote add account2-main https://github.com/rkn3743/try.git  # Account 2's main repo URL
-          git fetch account2-main  # Fetch the latest changes from the remote
+          git remote add account2-main https://github.com/rkn3743/try.git  # insert Account 2 repo + ".git"
+          git fetch account2-main 
 
       - name: Force Push Changes to Account 2's Main Repo
         run: |
-          git push account2-main main --force  # Force push changes to account 2's main branch
+          git push account2-main main --force 
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCOUNT2_TOKEN }}  # Use the PAT from account 2
+          GITHUB_TOKEN: ${{ secrets.ACCOUNT2_TOKEN }} 
