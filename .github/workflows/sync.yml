@@ -1,4 +1,4 @@
-name: Sync with Account 2's Main Repo
+name: Sync with Account 2's Main Repo # Account 1 = "dev" repo (athul), Account 2 = "main" repo (purav)
 
 on:
   push:
